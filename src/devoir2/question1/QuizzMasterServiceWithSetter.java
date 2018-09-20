@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class QuizzMasterServiceWithConstructor extends AbstractQuizzMasterService {
+public class QuizzMasterServiceWithSetter extends AbstractQuizzMasterService{
 
   @Autowired
-  public QuizzMasterServiceWithConstructor(QuizzMaster quizzMaster) {
+  public void setQuizzMaster(QuizzMaster quizzMaster) {
     this.quizMaster = quizzMaster;
-    initialize();
   }
-
 }
