@@ -1,9 +1,13 @@
 package devoir2.question1;
 
 public interface QuizzMaster {
-	public String getQuestion ();
-	public String getChoix (int indice);
-	public int getReponse ();
-	public String getType ();
+
+  String getQuestion();
+
+  String getChoice(int i);
+
+  int getResponse();
+
+  String getType();
 
 }

@@ -1,58 +1,77 @@
 package devoir2.question1;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
-public class QuizzMasterService {
-	private JFrame ecran;
-	private JRadioButton [] lesBoutons;
-	private QuizzMaster quizMaster = new UMLQuizz();
-	public QuizzMasterService()
-	{
-		this.ecran = new JFrame();
-		lesBoutons = new JRadioButton [4];
-		ecran.setSize( 450, 200 );
-		this.ecran.setTitle(quizMaster.getType());
-		// Fermeture de la fenêtre
-		ecran.addWindowListener( new WindowAdapter() {
-		public void windowClosing( WindowEvent we ) {
-			QuizzMasterService.this.terminer();
-		}
-		} );
-		// Le panneau central
-		JPanel panneauCentral = new JPanel( new BorderLayout() );
-		ecran.add( panneauCentral );
-		ActionListener listener = new ActionListener() {
-	         public void actionPerformed (ActionEvent e) {
-	        	 AbstractButton aButton = (AbstractButton) e.getSource();
-	        	 String message=aButton.getText();
-	        	 if(message.equals(quizMaster.getChoix(quizMaster.getReponse())))
-	        		 JOptionPane.showMessageDialog( ecran, "bonne réponse" );
-	        	 else
-	        		 JOptionPane.showMessageDialog( ecran, "mauvaise réponse" );         
-	        	 
-	         };
-	      };
-		JPanel panneauQuestion= new JPanel( new FlowLayout( FlowLayout.LEADING ) );
-		panneauQuestion.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder()));
-		JLabel monlabel=new JLabel(quizMaster.getQuestion());
-		panneauQuestion.add(monlabel);
-		panneauCentral.add( panneauQuestion, BorderLayout.NORTH );
-		JPanel panneauChoix = new JPanel( new FlowLayout( FlowLayout.LEFT ) );
-		ButtonGroup groupe = new ButtonGroup ();
-		for(int i=0; i<4; i++)
-		{
-			lesBoutons[i] = new JRadioButton (quizMaster.getChoix(i));
-			groupe.add(lesBoutons[i]);
-			panneauChoix.add(lesBoutons[i]);
-			lesBoutons[i].addActionListener(listener);
-		}
-		panneauCentral.add( panneauChoix, BorderLayout.CENTER);
-		ecran.setVisible( true );
-	}
-	private void terminer() {
-		
-		this.ecran.dispose();			
-		System.exit( 0 );
-	}
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import javax.swing.AbstractButton;
+import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+public class QuizzMasterService implements Runnable {
+
+  private JFrame screen;
+  private ArrayList<JRadioButton> buttons;
+  private QuizzMaster quizMaster;
+
+  public QuizzMasterService() {
+    screen = new JFrame();
+    buttons = new ArrayList<>();
+    screen.setSize(450, 200);
+    screen.setTitle(quizMaster.getType());
+
+    quizMaster = new UMLQuizz();
+  }
+
+  private void terminate() {
+
+    screen.dispose();
+    System.exit(0);
+  }
+
+  @Override
+  public void run() {
+    // Fermeture de la fenï¿½tre
+    screen.addWindowListener(new WindowAdapter() {
+      public void windowClosing(WindowEvent we) {
+        QuizzMasterService.this.terminate();
+      }
+    });
+    // Le panneau central
+    JPanel centralPanel = new JPanel(new BorderLayout());
+    screen.add(centralPanel);
+    ActionListener listener = e -> {
+      AbstractButton button = (AbstractButton) e.getSource();
+      String message = button.getText();
+      if (message.equals(quizMaster.getChoice(quizMaster.getResponse()))) {
+        JOptionPane.showMessageDialog(screen, "bonne rÃ©ponse");
+      } else {
+        JOptionPane.showMessageDialog(screen, "mauvaise rÃ©ponse");
+      }
+
+    };
+    JPanel questionPanel = new JPanel(new FlowLayout(FlowLayout.LEADING));
+    questionPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder()));
+    JLabel questionLabel = new JLabel(quizMaster.getQuestion());
+    questionPanel.add(questionLabel);
+    centralPanel.add(questionPanel, BorderLayout.NORTH);
+    JPanel choicePanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+    ButtonGroup buttonGroup = new ButtonGroup();
+    for (int i = 0; i < 4; i++) {
+      JRadioButton button = new JRadioButton(quizMaster.getChoice(i));
+      buttons.add(button);
+      buttonGroup.add(button);
+      choicePanel.add(button);
+      button.addActionListener(listener);
+    }
+    centralPanel.add(choicePanel, BorderLayout.CENTER);
+    screen.setVisible(true);
+  }
 }
