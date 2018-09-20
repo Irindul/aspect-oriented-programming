@@ -21,6 +21,9 @@ public class QuizzProgram {
     QuizzMasterServiceWithConstructor service = context.getBean(QuizzMasterServiceWithConstructor.class);
     QuizzMasterServiceWithSetter serviceWithSetter = context.getBean(QuizzMasterServiceWithSetter.class);
 
+
+    //Décommenter service.run() et commenter serviceWithSetter.run() pour lancer le programme avec
+    //l'injection de dépendances sur le constucteur.
     //service.run();
     serviceWithSetter.run();
   }
