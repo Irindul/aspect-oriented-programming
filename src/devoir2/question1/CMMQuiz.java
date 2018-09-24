@@ -1,6 +1,6 @@
 package devoir2.question1;
 
-public class CMMQuizz extends AbstractQuizz {
+public class CMMQuiz extends AbstractQuiz {
 
 	@Override
 	public void initializeValues() {

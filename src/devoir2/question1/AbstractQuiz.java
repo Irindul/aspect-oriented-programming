@@ -2,14 +2,14 @@ package devoir2.question1;
 
 import java.util.ArrayList;
 
-public abstract class AbstractQuizz implements QuizzMaster {
+public abstract class AbstractQuiz implements QuizMaster {
   protected String type;
   protected String question;
   protected ArrayList<String> choices;
   protected int answer;
 
 
-  public AbstractQuizz() {
+  public AbstractQuiz() {
     choices = new ArrayList<>();
     initializeValues();
   }

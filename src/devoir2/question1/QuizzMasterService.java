@@ -15,16 +15,24 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class AbstractQuizzMasterService implements Runnable{
+public class QuizzMasterService implements Runnable {
 
-  protected JFrame screen;
-  protected ArrayList<JRadioButton> buttons;
-  protected QuizzMaster quizMaster;
+  private JFrame screen;
+  private ArrayList<JRadioButton> buttons;
+  private QuizMaster quizMaster;
 
-  public AbstractQuizzMasterService() {
-    //Pas d'injection de dépendances ici (code de base)
-    quizMaster = new UMLQuizz();
+
+  public QuizzMasterService() {
     initialize();
+  }
+
+  public QuizzMasterService(QuizMaster quizMaster) {
+    this.quizMaster = quizMaster;
+    initialize();
+  }
+
+  public void setQuizMaster(QuizMaster quizMaster) {
+    this.quizMaster = quizMaster;
   }
 
   protected void initialize() {
@@ -32,7 +40,6 @@ public class AbstractQuizzMasterService implements Runnable{
     buttons = new ArrayList<>();
 
     screen.setSize(450, 200);
-    screen.setTitle(quizMaster.getType());
   }
 
   private void terminate() {
@@ -40,14 +47,20 @@ public class AbstractQuizzMasterService implements Runnable{
     System.exit(0);
   }
 
+
   @Override
   public void run() {
+    screen.setTitle(quizMaster.getType());
+
+
     // Fermeture de la fen�tre
     screen.addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent we) {
-        AbstractQuizzMasterService.this.terminate();
+        QuizzMasterService.this.terminate();
       }
     });
+
+
     // Le panneau central
     JPanel centralPanel = new JPanel(new BorderLayout());
     screen.add(centralPanel);
@@ -78,4 +91,5 @@ public class AbstractQuizzMasterService implements Runnable{
     centralPanel.add(choicePanel, BorderLayout.CENTER);
     screen.setVisible(true);
   }
+
 }

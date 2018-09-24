@@ -2,7 +2,12 @@
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Quizz" removed="false">
+          <file>file://$MODULE_DIR$/src/devoir2/question1/quizz.xml</file>
+          <file>file://$MODULE_DIR$/src/devoir2/question1/QuizzProgram.java</file>
+        </fileset>
+      </configuration>
     </facet>
     <facet type="AspectJ" name="AspectJ">
       <configuration>

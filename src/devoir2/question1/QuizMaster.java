@@ -1,6 +1,6 @@
 package devoir2.question1;
 
-public interface QuizzMaster {
+public interface QuizMaster {
 
   String getQuestion();
 

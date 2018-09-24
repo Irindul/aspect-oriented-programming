@@ -2,7 +2,7 @@ package devoir2.question1;
 
 import java.util.ArrayList;
 
-public class UMLQuizz extends AbstractQuizz {
+public class UMLQuiz extends AbstractQuiz {
 
   @Override
   public void initializeValues() {
