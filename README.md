@@ -15,25 +15,14 @@ TODO jar + path to jar
 
 ### Question 1 
 Le code concernant la question 1 est situé dans le package `devoir2.question1`.   
-Ici, deux implémentation ont été faite, une qui utilise l'injection de dépendances 
+Ici, deux implémentations ont été faite, une qui utilise l'injection de dépendances 
 sur le constructeur, et une qui l'utilise sur les setters. 
-
-Une classe abstraite `AbstractQuizzMasterService` à été crée afin de pouvoir utiliser deux 
-implémentation différentes pour chaque moyen de faire l'injection de dépendance. Cette classe abstraite 
-contient toute la logique d'affichage.  
-La class `QuizzMasterServiceWithConstructor` hérite de `AbstractQuizzMasterService` 
-et contient le code d'implémentation pour l'injection de dépendances avec le constructeur.
- Le code pour l'injection de dépendances avec les setters est situé dans la classe 
- `QuizzMasterServiceWithSetter` qui hérite également
+La définition des beans est faite dans le fichier `devoir2/question1/quiz.xml`. Il suffit de changer la valeur du bean dans 
+`ref` pour changer la valeur instanciée.  
+La classe `QuizzProgram` contient la méthode main et instancie deux fois `QuizMasterService`.
+Une seule instance est lancé mais il suffit de commenter 
+`quizWithConstructor.run();` et décomenter `quizWithSetter.run();` pour lancer l'autre. 
  
-La classe `QuizzProgram` contient la méthode main et possède une définition d'un bean. 
-Il suffit de modifier la classe instancié dans ce bean pour modifier la classe injectée.
-L'ensemble de la configuration de l'injection de dépendances est faite grâce aux annotations de Spring. 
-  
-  
-Le méthode main instancie les deux services, mais lance uniquement le service concernant l'injection de 
-dépendances avec les setters. Il suffit de changer la ligne commenté pour éxécuter l'autre. 
-
 
 ### Question 2
 Le code est disponible dans le package `devoir2.question2`.  
