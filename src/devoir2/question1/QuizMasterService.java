@@ -15,18 +15,18 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
-public class QuizzMasterService implements Runnable {
+public class QuizMasterService implements Runnable {
 
   private JFrame screen;
   private ArrayList<JRadioButton> buttons;
   private QuizMaster quizMaster;
 
 
-  public QuizzMasterService() {
+  public QuizMasterService() {
     initialize();
   }
 
-  public QuizzMasterService(QuizMaster quizMaster) {
+  public QuizMasterService(QuizMaster quizMaster) {
     this.quizMaster = quizMaster;
     initialize();
   }
@@ -56,7 +56,7 @@ public class QuizzMasterService implements Runnable {
     // Fermeture de la fen�tre
     screen.addWindowListener(new WindowAdapter() {
       public void windowClosing(WindowEvent we) {
-        QuizzMasterService.this.terminate();
+        QuizMasterService.this.terminate();
       }
     });
 
