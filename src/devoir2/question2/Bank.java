@@ -3,7 +3,7 @@ package devoir2.question2;
 import java.util.ArrayList;
 
 public class Bank {
-  ArrayList<Client> clients;
+  private ArrayList<Client> clients;
   private double interest;
 
   public Bank() {
