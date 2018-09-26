@@ -3,9 +3,9 @@
   <component name="FacetManager">
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset" name="Quizz" removed="false">
-          <file>file://$MODULE_DIR$/src/devoir2/question1/quizz.xml</file>
-          <file>file://$MODULE_DIR$/src/devoir2/question1/QuizzProgram.java</file>
+        <fileset id="fileset" name="Quizz" removed="false" />
+        <fileset id="fileset2" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/devoir2/question1/quiz.xml</file>
         </fileset>
       </configuration>
     </facet>

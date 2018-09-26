@@ -9,9 +9,9 @@ public class Trader implements Runnable{
 
   public Trader(Bank bank) {
     this.bank = bank;
-    bank.addClient(new Client("1"))
-        .addClient(new Client("2"))
-        .addClient(new Client("3"));
+    new Client("1");
+    new Client("2");
+    new Client("3");
     random = new Random(1234);
   }
 

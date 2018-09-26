@@ -26,16 +26,18 @@ Une seule instance est lancé mais il suffit de commenter
 
 ### Question 2
 Le code est disponible dans le package `devoir2.question2`.  
-Ici, nous avons mis en place un système de banque. La banque possède une liste de clients et un taux d'intérêt. 
+Ici, nous avons mis en place un système de banque. La banque possède un taux d'intérêt. 
 Ce taux d'intêret est sujet aux modifications et sera mis à jour de manière aléatoire grâce à la classe `Trader`.
 
 Les clients souhaitent être notifiés lorsque le taux d'interrêt change. 
 Pour cela, le pattron architectural Publisher/Subscriber est mis en place, grâce à l'implémentation 
 Observer/Observable.   
 Pour réduire le couplage, la classe banque ne s'occupe pas de prévenir les clients lors d'un changement. 
+La classe banque ne possède aucun lien avec les clients. 
 
-Un aspect `ClientNotifierAspect` est crée et se sert de notifier les clients 
-après l'appel de la méthode Bank.setInterest().
+Un aspect `ClientNotifierAspect` est crée et possède une liste d'`Observer`. On capture dans l'aspect l'instanciation 
+de Clients et on les ajoute à la liste d'observer.
+Il se sert de notifier les clients après l'appel de la méthode `Bank.setInterest()`.
 
 ### Question 3
 
