@@ -13,7 +13,13 @@ Afin de compiler la deuxième partie du code, il faut configurer l'environnement
 pour utiliser le compilateur d'AspectJ [asc](https://www.eclipse.org/downloads/download.php?file=/tools/aspectj/dev/aspectj-DEVELOPMENT-20180312080830.jar).
 
 ## Éxécution
-TODO jar + path to jar
+Dans un terminal, éxécuter les commandes suivantes pour éxécuter chacune des questions :   
+- Pour la question 1 : `$ java -jar ./builds/question1.jar`.
+- Pour la question 2 : `$ java -jar ./builds/question2.jar`.
+
+> Le programme de la question 2 tourne à l'infini, il faut l'arrêter avec un SIGINT (Ctrl+C dans le terminal).
+
+
 ## Description 
 
 ### Question 1 
