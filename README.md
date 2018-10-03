@@ -1,4 +1,4 @@
-# [8INF956] - TP1
+# [8INF956] - TP1 - Mathieu Regnard
 
 Ce rapport est écrit au format markdown. Pour un meilleur rendu, il est conseillé de l'ouvrir dans un éditeur
 qui supporte ce format. Il est disponible déja parsé sur la page [GitHub](https://github.com/irindul/aspect-oriented-programming).
